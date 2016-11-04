@@ -34,10 +34,15 @@ let(:warm){ Warmup.new }
       warm.calls_some_methods(string_double)
     end
 
-    it "calls the reverse! method"
+    it "calls the reverse! method" do
+      warm.calls_some_methods(string_double)
+    end
 
 
-    it "calls returns a different object than the one you passed in"
+    it "returns a different object than the one you passed in" do
+      double_id = string_double.object_id
+      expect(warm.calls_some_methods(string_double).object_id ).not_to eq(double_id)
+    end
 
   end
 
