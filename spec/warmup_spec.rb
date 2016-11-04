@@ -28,16 +28,16 @@ let(:warm){ Warmup.new }
     let(:string_double) { double(:upcase! => "BARK!", :empty? => false, :reverse! => "!KRAB") }
 
     it "calls the upcase! method" do
-      #string = "bark"
-      #expect(string).to receive(:upcase!).and_return("BARK!")
-      #expect(string_double).to receive(:upcase!)
+      # string = "bark"
+      expect(string_double).to receive(:upcase!)
       warm.calls_some_methods(string_double)
     end
 
     it "calls the reverse! method" do
+      allow(string_double).to receive(:upcase!).and_return(string_double)
+      expect(string_double).to receive(:reverse!)
       warm.calls_some_methods(string_double)
     end
-
 
     it "returns a different object than the one you passed in" do
       double_id = string_double.object_id
