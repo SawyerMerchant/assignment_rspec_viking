@@ -5,13 +5,20 @@ require_relative 'weapons/fists'
 class Viking
   attr_reader :health, :strength, :name, :weapon
 
-  def initialize(name="RandomViking", health = 100, strength = 10, weapon = nil)
-    @name = name
-    @health = health
-    @strength = strength
+  def initialize(args={})
+    @name = args[:name] || "RandomViking"
+    @health = args[:health] || 100
+    @strength = args[:strength] || 10
     @fists = Fists.new
-    @weapon = weapon
+    @weapon = args[:weapon]
   end
+  # def initialize(name="RandomViking", health = 100, strength = 10, weapon = nil)
+  #   @name = name
+  #   @health = health
+  #   @strength = strength
+  #   @fists = Fists.new
+  #   @weapon = weapon
+  # end
 
 
   def attack(target)
@@ -68,8 +75,8 @@ class Viking
 end
 
 # Run script
-oleg = Viking.new("Oleg")
-sven = Viking.new("Sven")
+oleg = Viking.new(name: "Oleg")
+sven = Viking.new(name: "Sven")
 oleg.attack(sven)
 oleg.pick_up_weapon(Bow.new(2))
 3.times { oleg.attack(sven) }

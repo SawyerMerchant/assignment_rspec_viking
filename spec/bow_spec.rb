@@ -25,9 +25,8 @@ describe Bow do
 
     it 'it can run out of arrows' do
       empty = Bow.new(0)
-      expect(empty.use).to raise_error
+      expect{empty.use}.to raise_error("Out of arrows")
     end
-
 
   end
 end
