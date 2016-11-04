@@ -25,8 +25,13 @@ let(:warm){ Warmup.new }
 
   describe '#calls_some_methods' do
 
+    let(:string_double) { double(:upcase! => "BARK!", :empty? => false, :reverse! => "!KRAB") }
+
     it "calls the upcase! method" do
-      allow(String).to receive(:upcase!).and_return("BARK")
+      #string = "bark"
+      #expect(string).to receive(:upcase!).and_return("BARK!")
+      #expect(string_double).to receive(:upcase!)
+      warm.calls_some_methods(string_double)
     end
 
     it "calls the reverse! method"
