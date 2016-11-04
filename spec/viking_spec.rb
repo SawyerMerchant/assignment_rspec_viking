@@ -81,11 +81,30 @@ describe Viking do
   describe '#attack' do
 
     it "runs damage_with_fists when attacking with no weapon" do
-      #olg.drop_weapon
-      # binding.pry
       olg_fists_damage = 2.5
       expect(olg).to receive(:damage_with_fists).and_return(olg_fists_damage)
       olg.attack(merf)
+    end
+
+    it "calculates fist damage correctly" do
+      fists_multiplier = Fists.new.instance_variable_get(:@multiplier)
+      olg_initial_health = olg.health
+      merf.attack(olg)
+      expect(olg_initial_health - olg.health).to eq(fists_multiplier*olg.strength)
+    end
+
+    it "runs damage_with_weapon when attacking with a weapon" do
+      olg.pick_up_weapon(Axe.new)
+      expect(olg).to receive(:damage_with_weapon).and_return(10)
+      olg.attack(merf)
+    end
+
+    it "calculates axe damage correctly" do
+      axe_multiplier = Axe.new.instance_variable_get(:@multiplier)
+      puts "axe_multiplier #{axe_multiplier}"
+      # olg_initial_health = olg.health
+      # merf.attack(olg)
+      # expect(olg_initial_health - olg.health).to eq(axe_multiplier*olg.strength)
     end
 
   end
