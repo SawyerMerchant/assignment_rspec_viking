@@ -83,8 +83,8 @@ describe Viking do
     it "runs damage_with_fists when attacking with no weapon" do
       #olg.drop_weapon
       # binding.pry
-      # expect(olg).to receive(:damage_with_fists).and_return(2.5)
-
+      olg_fists_damage = 2.5
+      expect(olg).to receive(:damage_with_fists).and_return(olg_fists_damage)
       olg.attack(merf)
     end
 
