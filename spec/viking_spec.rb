@@ -3,12 +3,12 @@ require 'viking'
 describe Viking do
 
   let(:olg) { Viking.new }
+  let(:merf) { Viking.new(name: 'Merf') }
 
   describe '#initialize' do
 
     it 'can be assigned a name' do
-      olg2 = Viking.new(name: "Olg")
-      expect(olg2.name).to eq("Olg")
+      expect(merf.name).to eq("Merf")
     end
 
     it 'can be assigned a health value' do
@@ -22,6 +22,10 @@ describe Viking do
     it 'has no weapon by default' do
       expect(olg.weapon).to eq(nil)
     end
+
+  end
+
+  describe '#pick_up_weapon' do
 
     it "sets a Viking's weapon when picked up" do
       olg.pick_up_weapon(Bow.new)
@@ -46,10 +50,32 @@ describe Viking do
       expect(olg.weapon).to eq(nil)
     end
 
+  end
+
+  describe '#receive_attack' do
+
     it "loses health when attacked" do
       olg.receive_attack(99) # A staggering blow!
       expect(olg.health).to eq(1)
     end
+
+  end
+
+  describe '#take_damage' do
+
+    #ask about me! I pass but heath stays same
+    it "calls the take_damage method when attacked" do
+      expect(olg).to receive(:take_damage)
+      merf.attack(olg)
+    end
+
+    it "has its health drop when attacked" do
+      olg_pre_attack_health = olg.health
+      merf.attack(olg)
+      expect(olg.health).to be < olg_pre_attack_health
+    end
+
+
 
 
 
