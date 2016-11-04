@@ -63,6 +63,7 @@ class Viking
   end
 
   def take_damage(damage)
+    #binding.pry
     @health -= damage
     check_death
     @health
@@ -75,15 +76,18 @@ class Viking
 end
 
 # Run script
-oleg = Viking.new(name: "Oleg")
-sven = Viking.new(name: "Sven")
-oleg.attack(sven)
-oleg.pick_up_weapon(Bow.new(2))
-3.times { oleg.attack(sven) }
-sven.attack(oleg)
-sven.pick_up_weapon(Axe.new)
-3.times {sven.attack(oleg)}
-puts "\nInspecting vikings:\n"
-puts oleg.inspect
-puts sven.inspect
-puts "\n...thanks for playing.\n\n"
+# oleg = Viking.new(name: "Oleg")
+# sven = Viking.new(name: "Sven")
+# oleg.attack(sven)
+# oleg.pick_up_weapon(Bow.new(2))
+# 3.times { oleg.attack(sven) }
+# sven.attack(oleg)
+# sven.pick_up_weapon(Axe.new)
+# 3.times {sven.attack(oleg)}
+# puts "\nInspecting vikings:\n"
+# puts oleg.inspect
+# puts sven.inspect
+# puts "\n...thanks for playing.\n\n"
+# olg = Viking.new
+# merf = Viking.new(name: 'Merf')
+# olg.attack(merf)

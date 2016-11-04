@@ -1,3 +1,4 @@
+require 'pry'
 require 'viking'
 
 describe Viking do
@@ -75,9 +76,17 @@ describe Viking do
       expect(olg.health).to be < olg_pre_attack_health
     end
 
+  end
 
+  describe '#attack' do
 
+    it "runs damage_with_fists when attacking with no weapon" do
+      #olg.drop_weapon
+      # binding.pry
+      # expect(olg).to receive(:damage_with_fists).and_return(2.5)
 
+      olg.attack(merf)
+    end
 
   end
 
